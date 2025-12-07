@@ -1,26 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 :root {
+  /* Light mode colors */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1a1a1a;
+  --foreground-secondary: #4a4a4a;
+  --neon-blue: #0099cc;
+  --neon-purple: #8b2fc9;
+  --neon-pink: #d6226b;
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-border: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode colors */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --foreground-secondary: #b0b0b0;
+  --neon-blue: #00d4ff;
+  --neon-purple: #b537f2;
+  --neon-pink: #ff2e97;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(255, 255, 255, 0.1);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-foreground-secondary: var(--foreground-secondary);
+  --color-neon-blue: var(--neon-blue);
+  --color-neon-purple: var(--neon-purple);
+  --color-neon-pink: var(--neon-pink);
+
+  --font-sans: 'Inter', 'Poppins', system-ui, sans-serif;
+
+  --animate-fade-in: fadeIn 0.6s ease-in-out;
+  --animate-slide-up: slideUp 0.6s ease-out;
+  --animate-slide-in: slideIn 0.6s ease-out;
+  --animate-scale-up: scaleUp 0.5s ease-out;
+  --animate-float: float 3s ease-in-out infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+* {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', 'Poppins', system-ui, sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* Glass morphism effect */
+.glass {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.dark .glass {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple), var(--neon-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Neon glow effects */
+.neon-glow {
+  box-shadow: 0 0 15px rgba(0, 153, 204, 0.3), 0 0 30px rgba(139, 47, 201, 0.2);
+}
+
+.dark .neon-glow {
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.5), 0 0 40px rgba(181, 55, 242, 0.3);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+}
+
+/* Selection */
+::selection {
+  background: var(--neon-blue);
+  color: white;
+}
+
+::-moz-selection {
+  background: var(--neon-blue);
+  color: white;
+}
+
+/* Additional utility styles for better visibility */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--foreground);
+}
+
+/* Ensure link visibility in light mode */
+a {
+  transition: color 0.3s ease;
+}
+
+/* Light mode text improvements */
+:root {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Form inputs - Light mode */
+input,
+textarea,
+select {
+  background: rgba(0, 0, 0, 0.03);
+  color: var(--foreground);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--foreground-secondary);
+  opacity: 0.6;
+}
+
+/* Form inputs - Dark mode */
+.dark input,
+.dark textarea,
+.dark select {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--foreground);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: var(--foreground-secondary);
+  opacity: 0.5;
+}
+
+/* Form focus states */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--neon-blue);
 }
