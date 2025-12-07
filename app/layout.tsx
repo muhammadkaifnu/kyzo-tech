@@ -21,10 +21,15 @@ export const metadata: Metadata = {
   description: "Innovative digital solutions that transform businesses. Web development, mobile apps, AI/ML solutions, and more.",
   keywords: ["web development", "mobile apps", "AI/ML", "UI/UX design", "software agency", "AI automation"],
   authors: [{ name: "Kyzo Tech" }],
+  icons: {
+    icon: '/logo.png',
+    apple: '/logo.png',
+  },
   openGraph: {
     title: "Kyzo Tech - Building the Future of Technology",
     description: "Innovative digital solutions that transform businesses",
     type: "website",
+    images: ['/logo.png'],
   },
 };
 

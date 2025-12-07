@@ -72,13 +72,13 @@ export default function Contact() {
     {
       icon: <FiPhone className="w-6 h-6" />,
       title: 'Phone',
-      content: '+1 (555) 123-4567',
-      link: 'tel:+15551234567',
+      content: '+92 310 3213022',
+      link: 'tel:+923103213022',
     },
     {
       icon: <FiMapPin className="w-6 h-6" />,
       title: 'Location',
-      content: 'San Francisco, CA',
+      content: 'Peshawar, KPK, Pakistan',
       link: '#',
     },
   ];

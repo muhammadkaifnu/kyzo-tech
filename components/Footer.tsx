@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { FiGithub, FiTwitter, FiLinkedin, FiInstagram, FiMail } from 'react-icons/fi';
 
 export default function Footer() {
@@ -40,8 +41,16 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
           <div className="lg:col-span-2">
-            <Link href="/" className="text-3xl font-bold gradient-text inline-block mb-4">
-              Kyzo Tech
+            <Link href="/" className="flex items-center gap-4 mb-6 hover:opacity-80 transition-opacity">
+              <div className="relative w-28 h-28 md:w-32 md:h-32">
+                <Image
+                  src="/logo.png"
+                  alt="Kyzo Tech Logo"
+                  fill
+                  className="rounded-lg object-contain"
+                />
+              </div>
+              <span className="text-4xl md:text-5xl font-bold gradient-text">Kyzo Tech</span>
             </Link>
             <p className="text-foreground/70 mb-6 max-w-sm">
               Building innovative digital solutions that transform businesses and create exceptional user experiences.
